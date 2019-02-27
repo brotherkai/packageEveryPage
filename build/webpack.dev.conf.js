@@ -9,6 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 var PrerenderSpaPlugin = require('prerender-spa-plugin')
+const Renderer = PrerenderSPAPlugin.PuppeteerRenderer
 const portfinder = require('portfinder')
 
 const HOST = process.env.HOST
@@ -52,6 +53,25 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       // 列出哪些路由需要预渲染
       [ '/', '/cs1', '/cs2' ]
     ),
+//     new PrerenderSPAPlugin({
+//       // 生成文件的路径，也可以与webpakc打包的一致。
+//       staticDir: path.join(__dirname, '../dist'),
+
+//       // 对应自己的路由文件，比如index有参数，就需要写成 /index/param1。
+//       routes: ['/', '/product','/about','/contact','/join','/jzjh'],
+
+//       // 这个很重要，如果没有配置这段，也不会进行预编译
+//       renderer: new Renderer({
+//           inject: {
+//             foo: 'bar'
+//           },
+//           headless: false,
+//           // 在 main.js 中 document.dispatchEvent(new Event('render-event'))，两者的事件名称要对应上。
+//           renderAfterDocumentEvent: 'render-event'
+//       })
+//   })
+// ]
+// }),
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
     }),
@@ -59,11 +79,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
     new webpack.NoEmitOnErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.html',
-      inject: true
-    }),
+    // new HtmlWebpackPlugin({
+    //   filename: 'index.html',
+    //   template: 'index.html',
+    //   inject: true
+    // }),
     // copy custom static assets
     new CopyWebpackPlugin([
       {

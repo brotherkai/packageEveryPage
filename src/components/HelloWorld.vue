@@ -6,10 +6,19 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+   metaInfo: {
+      title: 'HelloWordtitle', // set a title
+      meta: [{                 // set meta
+        name: 'HelloWord-name',
+        content: 'HelloWord-content'
+      }],
+      link: [{                 // set link
+        rel: 'HelloWord-rel',
+        href: 'HelloWord-href'
+      }]
+    },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
     }
   }
 }

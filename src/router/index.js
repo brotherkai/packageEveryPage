@@ -5,6 +5,7 @@ import cs1 from '@/components/cs1'
 import cs2 from '@/components/cs2'
 Vue.use(Router)
 export default new Router({
+  mode:'history',
   routes: [
     {
       path: '/',

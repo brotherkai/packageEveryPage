@@ -6,7 +6,17 @@
 
 <script>
   export default {
-
+ metaInfo: {
+      title: '测试2title', // set a title
+      meta: [{                 // set meta
+        name: 'cs2-name',
+        content: 'cs2-content'
+      }],
+      link: [{                 // set link
+        rel: 'cs2-rel',
+        href: 'cs2-href'
+      }]
+    }
   }
 </script>
 
